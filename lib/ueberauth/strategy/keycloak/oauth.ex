@@ -79,7 +79,7 @@ defmodule Ueberauth.Strategy.Keycloak.OAuth do
     headers = Keyword.get(options, :headers, [])
     options = Keyword.get(options, :options, [])
     client_options = Keyword.get(options, :client_options, [])
-    client = OAuth2.Client.get_token!(client(client_options), params, headers, options)
+    client = OAuth2.Client.get_token!(client(client_options), params, headers, options ++ [:insecure])
     client.token
   end
 
